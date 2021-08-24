@@ -1,36 +1,39 @@
 # Game Design Pitch
-This is a skeleton/reference for a game design pitch. A full design will be much longer!   
-
+- The Game will be a bird eye view survival zombie shooter.
+ 
 ## Working Title
-Your game’s title should communicate the gameplay and the style of the game 
+Dont Turn
 
 ## Concept statement  
-The game in a tweet: one or two sentences at most that say what the game is and why it’s fun.  
+- Dont Turn will be a zombie survival, you will face wave after wave of zombies pushing your skills.
 
 ## Target audience  
-Age, gender, game or other relevant interests
+- Age: 8-15, Gender: Male, relevent interests: zombie survival, bird eye view shooter. 
 
 ## Reference
-Are there simular games? what are they, how do they relate, how is your game different?
+- A simular game is many top down shooter games but the closest is Box Head zombie wars.
 
 ## Player experience and game POV 
-
-- Who is the player? What is the setting? What is the fantasy the game grants the player? What emotions do you want the player to feel? What are the major phases of the player’s experience in the game?  
-
+What are the major phases of the player’s experience in the game? 
+ 
+- The player is the last surviver. He is attempting to survive by killing all of the zombies. the fantasy the game grants the player is the feel of overcomming hordes of zombies. i want the player to feel strong and powerful but after a couple waves feel outnumbered and enter a panic state because of the number of zombies. the players game experience will be early on they will be strong and powerful but later on start to struggle. the POV will be bird eye view.
 
 ## Unique Selling Points
-What makes your game stand out? How is it different from all other games? 
+
+-My game will stand out to those who love zombie games and survival type games.
 
 ## Genre(s) 
-Single genre is clearer but often less interesting. Genre combinations can be risky. Beware of ‘tired’ genres.  
+
+-zombie survival shooter.
 
 ## Platform(s) and primary technology 
-- PC or mobile? Table or phone? 2D or 3D? Unity or Javascript?
 
+- PC, mobile and Web, 3D Unity.
+
+TODO:
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Visual/audio Style 
 What is the "look and feel" of the game? How does this support the desired player’s experience? What concept art or reference art can you show to give the feel of the game? 
-
-
 
 
 ## Game Systems

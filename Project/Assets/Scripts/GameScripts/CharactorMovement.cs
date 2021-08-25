@@ -2,35 +2,64 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+//#if UNITY_ANDROID || UNITY_EDITOR
+// Debug.log("ANDROID INIT");
+//#endif
+
+[RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(Animator))]
 public class CharactorMovement : MonoBehaviour
 {
     public float movementSpeed = 1.0f;
 
-    public Transform target;
-    public Rigidbody rb;
+    Animator animator;
+    Rigidbody rb;
 
-    // Start is called before the first frame update
+    public Camera cam;
+    Vector3 worldMousePos = Vector3.zero;
+
+    public GameObject head;
+
     void Start()
     {
-        //if its on android
-        //if (Application.platform == RuntimePlatform.Android)
-        //{
-        //    OnAndroid = true;
-        //}
-
-        
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
 
     }
 
-
-    // Update is called once per frame
     void Update()
     {
-        Vector3 localVel = transform.InverseTransformDirection(rb.velocity);
+        WalkControls();
 
-        localVel.z = Input.GetAxis("Vertical") * movementSpeed;
-        localVel.x = Input.GetAxis("Horizontal") * movementSpeed;
-
-        rb.velocity = transform.TransformDirection(localVel);
+        LookControls();
     }
+
+    void WalkControls()
+    {
+        Vector3 localVel = rb.velocity;
+
+        localVel.z = -Input.GetAxis("Vertical") * movementSpeed;
+        localVel.x = -Input.GetAxis("Horizontal") * movementSpeed;
+
+        rb.velocity = localVel;
+
+        animator.SetBool("isWalking", rb.velocity.magnitude > 0.1f);
+    }
+
+    void LookControls()
+    {
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit hit;
+
+        if(Physics.Raycast(ray, out hit, int.MaxValue))
+        {
+            worldMousePos = hit.point;
+        }
+
+        transform.LookAt(new Vector3(worldMousePos.x, transform.position.y, worldMousePos.z));
+        head.transform.LookAt(worldMousePos);
+    }
+
 }

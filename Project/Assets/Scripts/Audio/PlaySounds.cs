@@ -10,7 +10,6 @@ public class PlaySounds : MonoBehaviour
     }
 
    
-
     private void Start()
     {
         FindObjectOfType<AudioManager>().Play("MenuMusic");

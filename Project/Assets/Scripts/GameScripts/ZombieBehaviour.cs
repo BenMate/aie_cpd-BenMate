@@ -2,42 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class ZombieBehaviour : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
 
+    public float maxZombieSize;
+
+    public Transform zombieBody;
     public HealthBar healthBar;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        animator = GetComponent<Animator>();
+
+        animator.speed = maxZombieSize - zombieBody.transform.localScale.y;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(20);
-        }
-
-        
-
+        animator.SetBool("isDead", currentHealth < 1); 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void DestroyZombie()
+    {
+        //ZombieManager.instance.zombiePositions.Remove(transform);
+        Destroy(gameObject);
+    }
+
+    void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag == "Bullet")
         {
-            //FindObjectOfType<AudioManager>().Play("PlayerDeath");
+            //FindObjectOfType<AudioManager>().Play("ZombieGrowl");
             TakeDamage(20);
-
         }
     }
-
 
     void TakeDamage(int damage)
     {

@@ -58,8 +58,12 @@ public class CharactorMovement : MonoBehaviour
             worldMousePos = hit.point;
         }
 
-        transform.LookAt(new Vector3(worldMousePos.x, transform.position.y, worldMousePos.z));
-        head.transform.LookAt(worldMousePos);
+        if (Time.timeScale > 0)
+        {
+            transform.LookAt(new Vector3(worldMousePos.x, transform.position.y, worldMousePos.z));
+            head.transform.LookAt(worldMousePos);
+        }
+        
     }
 
 }

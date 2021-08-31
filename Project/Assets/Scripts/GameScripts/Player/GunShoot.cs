@@ -21,14 +21,13 @@ public class GunShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-       
+        LookControls();
 
         if (Input.GetButtonDown("Fire1"))
         {
             if (Time.timeScale > 0)
             {
-               LookControls();
+              
                Shoot();
             }
            

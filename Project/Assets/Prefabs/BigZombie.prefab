@@ -1202,6 +1202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4157376086149128052}
   - component: {fileID: 4157376086139318578}
+  - component: {fileID: 4938399701363703899}
   - component: {fileID: 3626159834984665538}
   - component: {fileID: 3626159834984665539}
   m_Layer: 0
@@ -1246,6 +1247,28 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!195 &4938399701363703899
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4157376086148694804}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1
+  m_Speed: 0.5
+  m_Acceleration: 10
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0.55
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 3.75
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!136 &3626159834984665538
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1272,6 +1295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ebc55381a7717e41a4c3466ced5e1d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lookRadius: 10
   maxHealth: 100
   currentHealth: 100
   maxZombieSize: 3

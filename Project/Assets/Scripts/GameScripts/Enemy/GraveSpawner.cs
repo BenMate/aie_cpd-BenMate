@@ -22,8 +22,7 @@ public class GraveSpawner : MonoBehaviour
             int randEnemy = Random.Range(0, zombies.Length);
             int randspawnPoint = Random.Range(0, spawnPoints.Length);
 
-            ZombieManager.instance.zombiePositions.Add(Instantiate(zombies[0], 
-                spawnPoints[randspawnPoint].position, transform.rotation).transform);  
+            Instantiate(zombies[randEnemy], spawnPoints[randspawnPoint].position, transform.rotation);  
         }
     }
 }

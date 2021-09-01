@@ -4,13 +4,45 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-   // public GameObject deathEffect;
+    public int maxHealth = 28;
+    public int currentHealth;
 
-    private void OnCollisionEnter(Collision collision)
+    public HealthBar healthBar;
+    Animator animator;
+
+    void Start()
     {
-        if (collision.collider.tag == "Zombie")
-        {
-            FindObjectOfType<AudioManager>().Play("PlayerDeath");        
-        }
+        animator = GetComponent<Animator>();
+
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
+
+    void Update()
+    {
+        animator.SetBool("isDead", currentHealth < 1);
+        
+    }
+
+
+    void OnCollisionEnter(Collision collision)
+    {
+        
+        if (collision.collider.tag == "Zombie")
+        {        
+            TakeDamage(4);   //change from being hardcoded as 4
+        }
+
+        
+    }
+
+
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+
+        FindObjectOfType<AudioManager>().Play("PlayerDeath");
+    }
+
 }

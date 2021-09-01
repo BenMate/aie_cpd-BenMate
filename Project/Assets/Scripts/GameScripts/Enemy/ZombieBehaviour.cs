@@ -35,7 +35,7 @@ public class ZombieBehaviour : MonoBehaviour
     {
         animator.SetBool("isDead", currentHealth < 1);
 
-        walkControls();
+        WalkControls();
     }
 
     private void DestroyZombie()
@@ -56,11 +56,11 @@ public class ZombieBehaviour : MonoBehaviour
     void TakeDamage(int damage)
     {
         currentHealth -= damage;
-
         healthBar.SetHealth(currentHealth);
+
     }
 
-    void walkControls()
+    void WalkControls()
     {
         float distance = Vector3.Distance(target.position, transform.position);
 
@@ -72,10 +72,6 @@ public class ZombieBehaviour : MonoBehaviour
 
             if (distance <= agent.stoppingDistance)
             {
-                //todo: att target
-
-
-                
                 FaceTarget();
             }
         }

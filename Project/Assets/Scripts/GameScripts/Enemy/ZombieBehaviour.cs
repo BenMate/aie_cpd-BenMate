@@ -38,8 +38,13 @@ public class ZombieBehaviour : MonoBehaviour
         WalkControls();
     }
 
+
+
+
     private void DestroyZombie()
     {      
+        //freeze movement  either before event or here
+
         Destroy(gameObject);
     }
 

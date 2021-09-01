@@ -9,61 +9,93 @@ using UnityEngine;
 //#endif
 
 [RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(Animator))]
+
 public class CharactorMovement : MonoBehaviour
 {
+    public int maxHealth = 28;
+    public int currentHealth;
     public float movementSpeed = 1.0f;
 
     Animator animator;
     Rigidbody rb;
 
+    public HealthBar healthBar;
     public Camera cam;
-    Vector3 worldMousePos = Vector3.zero;
-
     public GameObject head;
 
+    public GameObject winScreen;
+
+    Vector3 worldMousePos = Vector3.zero;
+
+   
     void Start()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
 
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     void Update()
     {
         WalkControls();
-
         LookControls();
+        CharacterAnimations();
     }
 
-    void WalkControls()
-    {
-        Vector3 localVel = rb.velocity;
-
-        localVel.z = -Input.GetAxis("Vertical") * movementSpeed;
-        localVel.x = -Input.GetAxis("Horizontal") * movementSpeed;
-
-        rb.velocity = localVel;
-
-        animator.SetBool("isWalking", rb.velocity.magnitude > 0.1f);
-    }
-
-    void LookControls()
-    {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-
-        RaycastHit hit;
-
-        if(Physics.Raycast(ray, out hit, int.MaxValue))
+        void OnCollisionEnter(Collision collision)
         {
-            worldMousePos = hit.point;
+            if (collision.collider.CompareTag("Zombie"))
+            {
+                TakeDamage(4);   //change from being hardcoded as 4
+            }
         }
 
-        if (Time.timeScale > 0)
+        void PlayerDeath()
         {
-            transform.LookAt(new Vector3(worldMousePos.x, transform.position.y, worldMousePos.z));
-            head.transform.LookAt(worldMousePos);
+            winScreen.SetActive(true);
+            Time.timeScale = 0.0f;
         }
-        
-    }
 
+        void CharacterAnimations()
+        {
+            animator.SetBool("isWalking", rb.velocity.magnitude > 0.1f && currentHealth > 1);
+            animator.SetBool("isDead", currentHealth < 1);
+        }
+
+        void TakeDamage(int damage)
+        {
+            currentHealth -= damage;
+            healthBar.SetHealth(currentHealth);
+
+            FindObjectOfType<AudioManager>().Play("PlayerDeath");
+        }
+
+        void WalkControls()
+        {
+            Vector3 localVel = rb.velocity;
+
+            localVel.z = -Input.GetAxis("Vertical") * movementSpeed;
+            localVel.x = -Input.GetAxis("Horizontal") * movementSpeed;
+
+            rb.velocity = localVel;
+        }
+
+        void LookControls()
+        {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, int.MaxValue))
+                worldMousePos = hit.point;
+
+            if (Time.timeScale > 0)
+            {
+                transform.LookAt(new Vector3(worldMousePos.x, transform.position.y, worldMousePos.z));
+                head.transform.LookAt(worldMousePos);
+            }
+
+        }
+    
 }

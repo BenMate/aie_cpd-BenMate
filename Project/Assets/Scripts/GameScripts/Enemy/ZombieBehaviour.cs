@@ -18,6 +18,8 @@ public class ZombieBehaviour : MonoBehaviour
     Animator animator;
     Transform target;
     NavMeshAgent agent;
+
+   
    
     void Start()
     {
@@ -28,7 +30,9 @@ public class ZombieBehaviour : MonoBehaviour
         animator.speed = maxZombieSize - zombieBody.transform.localScale.y;
 
         target = PlayerManager.instance.player.transform;
-        agent = GetComponent<NavMeshAgent>();    
+        agent = GetComponent<NavMeshAgent>();
+
+      
     }
 
     void Update()
@@ -39,12 +43,15 @@ public class ZombieBehaviour : MonoBehaviour
     }
 
 
+    void FreezeZombies()
+    {
+       //freeze x position? or something
 
+        //stop them from attacking by either making their hit radius super small or something else
+    }
 
-    private void DestroyZombie()
+    void DestroyZombie()
     {      
-        //freeze movement  either before event or here
-
         Destroy(gameObject);
     }
 

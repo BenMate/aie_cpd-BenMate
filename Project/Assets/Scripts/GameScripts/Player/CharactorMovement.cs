@@ -30,6 +30,8 @@ public class CharactorMovement : MonoBehaviour
    
     void Start()
     {
+        Time.timeScale = 1.0f; //starts the game off as 1 so the player can be paused.
+
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
 

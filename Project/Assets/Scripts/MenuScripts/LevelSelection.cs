@@ -8,11 +8,13 @@ public class LevelSelection : MonoBehaviour
     public void PlayMenu()
     {
         SceneManager.LoadScene(0);
+        
     }
 
     public void PlayLevelOne()
     {
         SceneManager.LoadScene(1);
+        
     }
 
     public void PlayerLevelTwo()

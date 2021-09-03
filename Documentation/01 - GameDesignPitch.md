@@ -30,14 +30,21 @@ What are the major phases of the player’s experience in the game?
 
 - PC, mobile and Web, 3D Unity.
 
-TODO:
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## Visual/audio Style 
-What is the "look and feel" of the game? How does this support the desired player’s experience? What concept art or reference art can you show to give the feel of the game? 
+The look and feel of my game im going for is an arcade shooter, a low poly cartoon vibe.
+the expience i want to player to feel is to be stronger then the enemys and only losing because they made a bad judgment in movement.
 
+some Screen shoots i can show are gameplay and the players health.
+
+![alt text](./images/ScreenShot_1.png "Player Health")
+![alt text](./images/ScreenShot_2.png "GamePlay")
+
+TODO--------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Game Systems
 What systems are needed to make this game? Which ones are internal (simulation, etc.) and which does the player interact with? 
+
+
 
 ## Interactivity
 How are different kinds of interactivity used? (Perceptual, ST Cognitive, LT Cognitive, Emotional, Social, Cultural) What is the player doing Moment‐by‐moment? How does the player move through the world?  How does physics/combat/etc. work? 
